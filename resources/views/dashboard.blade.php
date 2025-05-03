@@ -36,5 +36,20 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="col-sm-12 col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Generate QR</h5>
+                    <p class="card-text">Generate QR Code for Products</p>
+                    <a href="{{ route('products.index') }}" class="btn btn-primary">Manage QR</a>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
 @endsection

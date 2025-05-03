@@ -7,7 +7,7 @@ use App\Http\Controllers\FAQcontroller;
 use App\Http\Controllers\GuideController;
 use App\Models\ProsperGuide;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\ProductController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -20,6 +20,12 @@ use Illuminate\Support\Facades\Auth;
 //     return redirect('/login');
 // })->name('logout');//may problem pa
 
+
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{product_id}/qr', [ProductController::class, 'generateQr'])->name('products.generateQr');
+Route::get('/products/{id}/qr', [ProductController::class, 'viewQr'])->name('products.viewQr');
+Route::get('/products/verify/{product_id}', [ProductController::class, 'verify'])->name('products.verify');
 
 Route::get('/', function () {
     return view('dashboard');
@@ -38,7 +44,6 @@ Route::get('/FAQs/edit/{id}', [FAQcontroller::class, 'edit'])->name('faq.edit');
 Route::put('/FAQs/update/{id}', [FAQcontroller::class, 'update'])->name('faq.update');
 Route::get('/FAQs/add', [FAQcontroller::class, 'add'])->name('faq.add');
 Route::put('/FAQs', [FAQcontroller::class, 'store'])->name('faqs.store');
-
 
 Route::get('/prosperGuide', [GuideController::class, 'index'])->name('guide.index');
 Route::get('/prosperGuide/edit/{zodiacID}', [GuideController::class, 'edit'])->name('guide.edit');

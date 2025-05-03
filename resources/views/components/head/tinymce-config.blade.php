@@ -1,5 +1,5 @@
 <div>
-    <script src="https://cdn.tiny.cloud/1/he4tkwjgmx2j7r2l5pv1e9eoi0iqj84uvsdxvxiung4wq051/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/0r2d7yxc2qi93i6zu1szgj6e1nhjff1gzi2kaab18b8nw7wb/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: '.tinymce-editor',

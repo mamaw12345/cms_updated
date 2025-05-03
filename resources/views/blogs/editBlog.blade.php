@@ -145,8 +145,7 @@
                     <div id="preview-content" style="font-size: 17px; line-height: 1.8; color: #4a4a4a; white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word;">
                         Content will appear here
                     </div>
-                    <p>Debug path: {{ $blog->cover_image }}</p>
-
+                    <p>{{ $blog->cover_image }}</p>
                 </div>
             </div>
         </div>
@@ -181,8 +180,11 @@
     const currentImage = "{{ asset('storage/' . $blog->cover_image) }}";
 
     const previewImg = document.getElementById('preview-image');
-    previewImg.onerror = () => previewImg.src = currentImage;
-    previewImg.src = currentImage || fallbackImage;
+
+    // Check if the current image exists and is valid
+    previewImg.src = currentImage && currentImage !== 'undefined' ? currentImage : fallbackImage;
+
+    previewImg.onerror = () => previewImg.src = fallbackImage;
 
     document.getElementById('title').addEventListener('input', updatePreview);
     document.getElementById('category').addEventListener('input', updatePreview);
@@ -199,6 +201,7 @@
         } else {
             document.getElementById('preview-image').src = fallbackImage;
         }
+        console.log("Cover image changed:", event.target.files[0]);
     });
 
     updatePreview();

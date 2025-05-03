@@ -45,17 +45,11 @@ class BlogController extends Controller
         $blog->content = $request->input('content');
         $blog->publish_date = $request->input('publish_date');
         $blog->status = $request->input('status');
-
-        // Handle cover image upload if a new image is provided
         if ($request->hasFile('cover_image')) {
-            $image = $request->file('cover_image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->storeAs('public/blog_covers', $imageName);
-            $blog->cover_image = $imageName;
+            $imagePath = $request->file('cover_image')->store('blogs', 'public');
+            $blog->cover_image = $imagePath;
         }
-
         $blog->save();
-
         return redirect()->route('blog.index')->with('success', 'Blog updated successfully.');
     }
 
